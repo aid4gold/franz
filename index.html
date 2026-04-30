@@ -785,8 +785,8 @@
     } else {
       lbImg.style.display = "none";
       lbRotBtn.style.display = "none";
-      lbVideoWrap.style.display = "";
-      lbIframe.src = "https://www.youtube.com/embed/" + item.id + "?autoplay=1&rel=0";
+      lbVideoWrap.style.display = "block";
+      lbIframe.src = "https://www.youtube.com/embed/" + item.id + "?rel=0";
       document.getElementById("lb-caption").textContent = item.name;
     }
     document.getElementById("lb-counter").textContent = (lbIndex + 1) + " / " + lbItems.length;
