@@ -185,6 +185,9 @@
   });
 
   function initUiBindings() {
+    // Enable :active pseudo-class on iOS Safari for non-anchor elements
+    document.body.addEventListener("touchstart", () => {}, {passive:true});
+
     // Swipe gesture for lightbox
     let lbTouchX = 0, lbTouchY = 0;
     const lbRoot = document.getElementById(LIGHTBOX_ID);
