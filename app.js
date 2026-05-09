@@ -305,6 +305,26 @@
       const fallback = thumb.querySelector(".media-thumb-inner");
       if (fallback) fallback.style.display = "flex";
     }, true);
+
+    // Add a contextual shortcut to the daily care manual in all room sections
+    document.querySelectorAll(".section-block").forEach(section => {
+      if (section.id === "sec-manual") return;
+      const title = section.querySelector(".section-title");
+      if (!title || section.querySelector(".manual-shortcut")) return;
+      const box = document.createElement("div");
+      box.className = "info-box manual-shortcut";
+      box.innerHTML = '<strong>Denní režim:</strong> Podrobný časový plán péče najdete v sekci <a href="#" class="manual-shortcut-link">📘 Manuál péče</a>.';
+      title.insertAdjacentElement("afterend", box);
+    });
+
+    document.addEventListener("click", e => {
+      const link = e.target.closest(".manual-shortcut-link");
+      if (!link) return;
+      e.preventDefault();
+      const navBtn = document.querySelector('.nav-btn[data-section="manual"]');
+      if (navBtn) showSection("manual", navBtn);
+      setTimeout(() => document.getElementById("denni-rezim")?.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
+    });
   }
 
   if (document.readyState === "loading") {
