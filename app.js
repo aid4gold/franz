@@ -1,4 +1,4 @@
-﻿const PASSWORD = "asistent2024";
+﻿const PASSWORD = "2024";
   const LIGHTBOX_ID = "lightbox";
   const ACTIVE_SECTION_SELECTOR = ".section-block.active";
 
@@ -96,7 +96,9 @@
       lbRotBtn.style.display = "";
       lbImg.src = item.el.src;
       lbImg.alt = item.el.alt;
-      const rot = lbRotation[item.el.src] || 0;
+      const baseRot = parseInt(item.el.dataset.lbRotate || "0", 10) || 0;
+      const userRot = lbRotation[item.el.src] || 0;
+      const rot = ((baseRot + userRot) % 360 + 360) % 360;
       const mob = window.innerWidth <= 600;
       lbImg.style.transform = "rotate(" + rot + "deg)";
       if (rot === 90 || rot === 270) { lbImg.style.maxWidth = mob ? "62vh" : "80vh"; lbImg.style.maxHeight = mob ? "96vw" : "92vw"; }
@@ -233,3 +235,4 @@
   } else {
     initUiBindings();
   }
+
