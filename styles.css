@@ -44,9 +44,29 @@ body { font-family:"Nunito",sans-serif; background:var(--gray-bg); color:var(--t
 .hero p { font-size:0.8rem; color:var(--gray-text); line-height:1.5; max-width:500px; margin:0 auto; }
 
 /* ── NAVIGATION ── */
-.section-nav { background:var(--white); border-bottom:1px solid var(--gray-mid); position:sticky; top:52px; z-index:100; padding:6px 0.875rem; }
-.section-nav-inner { display:flex; gap:4px; max-width:900px; margin:0 auto; background:var(--gray-bg); border:1px solid var(--gray-mid); border-radius:100px; padding:4px; overflow-x:auto; scrollbar-width:none; }
+.section-nav { background:var(--white); border-bottom:1px solid var(--gray-mid); position:sticky; top:52px; z-index:100; padding:6px 0.875rem; display:flex; align-items:center; gap:8px; }
+.section-nav-inner { flex:1; min-width:0; display:flex; gap:4px; max-width:none; margin:0; background:var(--gray-bg); border:1px solid var(--gray-mid); border-radius:100px; padding:4px; overflow-x:auto; scrollbar-width:none; }
 .section-nav-inner::-webkit-scrollbar { display:none; }
+
+/* ── HAMBURGER BUTTON ── */
+#menu-toggle { flex-shrink:0; display:flex; align-items:center; justify-content:center; width:40px; height:40px; background:var(--gray-bg); border:1px solid var(--gray-mid); border-radius:10px; color:var(--text); cursor:pointer; transition:background 0.15s,border-color 0.15s; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+#menu-toggle:active { background:var(--gray-mid); }
+#menu-toggle.open { background:var(--orange-pale); border-color:var(--orange-light); color:var(--orange); }
+#menu-toggle svg { display:block; }
+
+/* ── ROOM DRAWER (bottom sheet) ── */
+#room-overlay { position:fixed; inset:0; z-index:498; background:rgba(16,14,12,0.5); opacity:0; visibility:hidden; transition:opacity 0.25s ease,visibility 0.25s ease; }
+#room-overlay.open { opacity:1; visibility:visible; }
+#room-drawer { position:fixed; bottom:0; left:0; right:0; z-index:499; background:var(--white); border-radius:20px 20px 0 0; padding-bottom:env(safe-area-inset-bottom,0px); max-height:85vh; overflow-y:auto; transform:translateY(100%); transition:transform 0.32s cubic-bezier(0.32,0.72,0,1); box-shadow:0 -4px 32px rgba(0,0,0,0.14); }
+#room-drawer.open { transform:translateY(0); }
+.room-drawer-handle { width:44px; height:4px; background:var(--gray-mid); border-radius:2px; margin:12px auto 0; }
+.room-drawer-title { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--gray-text); padding:10px 1.25rem; }
+.room-drawer-list { padding-bottom:0.5rem; }
+.room-drawer-item { display:flex; align-items:center; gap:14px; width:100%; padding:14px 1.25rem; border:none; border-bottom:1px solid var(--gray-mid); background:none; text-align:left; font-family:"Nunito",sans-serif; font-size:1rem; font-weight:600; color:var(--text); cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation; transition:background 0.15s; }
+.room-drawer-item:last-child { border-bottom:none; }
+.room-drawer-item:active { background:var(--gray-bg); }
+.room-drawer-item.active { color:var(--orange); background:var(--orange-pale); }
+.room-drawer-item .rdi { font-size:1.5rem; width:30px; text-align:center; flex-shrink:0; }
 .nav-btn { background:transparent; border:none; padding:8px 12px; min-height:44px; border-radius:100px; font-size:0.8rem; font-weight:600; font-family:"Nunito",sans-serif; color:var(--gray-text); cursor:pointer; transition:all 0.18s; white-space:nowrap; display:flex; align-items:center; gap:5px; }
 .nav-btn:hover { color:var(--text); background:rgba(255,255,255,0.8); }
 .nav-btn.active { background:var(--white); color:var(--text); box-shadow:0 1px 4px rgba(0,0,0,0.12),0 0 0 1px rgba(0,0,0,0.05); }
@@ -130,7 +150,10 @@ button, .nav-btn, .media-card, .lb-btn { -webkit-tap-highlight-color:transparent
   .header-inner { padding:0 1.5rem; height:58px; }
   .header-dot { width:38px; height:38px; }
   .header-brand-text h1 { font-size:1rem; }
-  .section-nav { padding:10px 1.5rem; top:58px; }
+  .section-nav { padding:10px 1.5rem; top:58px; display:block; }
+  .section-nav-inner { flex:initial; max-width:900px; margin:0 auto; }
+  #menu-toggle { display:none; }
+  #room-overlay, #room-drawer { display:none; }
   .nav-btn { padding:9px 15px; min-height:40px; font-size:0.82rem; }
   .hero { padding:2.25rem 1.5rem; }
   .hero h2 { font-size:1.7rem; margin-bottom:0.6rem; }

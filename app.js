@@ -24,6 +24,9 @@
     btn.classList.add("active");
     btn.scrollIntoView({ block:"nearest", inline:"center", behavior:"smooth" });
     window.scrollTo({ top:0, behavior:"smooth" });
+    document.querySelectorAll(".room-drawer-item[data-section]").forEach(b => {
+      b.classList.toggle("active", b.dataset.section === id);
+    });
   }
  
   // LIGHTBOX
@@ -155,10 +158,14 @@
   }
 
   document.addEventListener("keydown", e => {
-    if (!document.getElementById(LIGHTBOX_ID).classList.contains("open")) return;
+    if (e.key === "Escape") {
+      if (isLightboxOpen()) lbClose();
+      else if (document.getElementById("room-drawer")?.classList.contains("open")) drawerClose();
+      return;
+    }
+    if (!isLightboxOpen()) return;
     if (e.key === "ArrowRight") lbNav(1);
     else if (e.key === "ArrowLeft") lbNav(-1);
-    else if (e.key === "Escape") lbClose();
     else if (e.key === "r" || e.key === "R") lbRotate();
   });
 
@@ -183,6 +190,24 @@
     }
     lbClose();
   });
+
+  function drawerOpen() {
+    document.getElementById("room-overlay").classList.add("open");
+    document.getElementById("room-drawer").classList.add("open");
+    document.getElementById("room-drawer").setAttribute("aria-hidden", "false");
+    document.getElementById("menu-toggle").classList.add("open");
+    document.getElementById("menu-toggle").setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function drawerClose() {
+    document.getElementById("room-overlay").classList.remove("open");
+    document.getElementById("room-drawer").classList.remove("open");
+    document.getElementById("room-drawer").setAttribute("aria-hidden", "true");
+    document.getElementById("menu-toggle").classList.remove("open");
+    document.getElementById("menu-toggle").setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
 
   function initUiBindings() {
     // Enable :active pseudo-class on iOS Safari for non-anchor elements
@@ -247,6 +272,28 @@
         if (name) img.alt = name;
       }
     });
+
+    // Hamburger menu / bottom drawer
+    document.getElementById("menu-toggle")?.addEventListener("click", () => {
+      document.getElementById("room-drawer").classList.contains("open") ? drawerClose() : drawerOpen();
+    });
+    document.getElementById("room-overlay")?.addEventListener("click", drawerClose);
+    document.querySelectorAll(".room-drawer-item[data-section]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const navBtn = document.querySelector(`.nav-btn[data-section="${btn.dataset.section}"]`);
+        if (navBtn) showSection(btn.dataset.section, navBtn);
+        drawerClose();
+      });
+    });
+    // Swipe down to close drawer
+    const drawerEl = document.getElementById("room-drawer");
+    if (drawerEl) {
+      let drawerTouchStartY = 0;
+      drawerEl.addEventListener("touchstart", e => { drawerTouchStartY = e.touches[0].clientY; }, {passive:true});
+      drawerEl.addEventListener("touchend", e => {
+        if (e.changedTouches[0].clientY - drawerTouchStartY > 72) drawerClose();
+      }, {passive:true});
+    }
 
     // Centralized image error fallback for all cards
     document.addEventListener("error", e => {

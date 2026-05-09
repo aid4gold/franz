@@ -57,6 +57,11 @@
   </div>
  
   <nav class="section-nav">
+    <button id="menu-toggle" aria-label="Otevřít seznam místností" aria-expanded="false" aria-controls="room-drawer">
+      <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="0" y1="2" x2="20" y2="2"/><line x1="0" y1="8" x2="20" y2="8"/><line x1="0" y1="14" x2="20" y2="14"/>
+      </svg>
+    </button>
     <div class="section-nav-inner">
       <button class="nav-btn active" data-section="satna">🚪 Šatna</button>
       <button class="nav-btn" data-section="kuchyn">🍳 Kuchyň</button>
@@ -653,6 +658,22 @@
   </footer>
 </div>
  
+<div id="room-overlay"></div>
+<div id="room-drawer" role="dialog" aria-label="Výběr místnosti" aria-hidden="true">
+  <div class="room-drawer-handle"></div>
+  <p class="room-drawer-title">Přejít do místnosti</p>
+  <div class="room-drawer-list">
+    <button class="room-drawer-item active" data-section="satna"><span class="rdi">🚪</span><span>Šatna</span></button>
+    <button class="room-drawer-item" data-section="kuchyn"><span class="rdi">🍳</span><span>Kuchyň</span></button>
+    <button class="room-drawer-item" data-section="obyvak"><span class="rdi">🛋️</span><span>Obývací pokoj</span></button>
+    <button class="room-drawer-item" data-section="franzpokoj"><span class="rdi">🛏️</span><span>Franz pokoj</span></button>
+    <button class="room-drawer-item" data-section="koupelna"><span class="rdi">🛁</span><span>Koupelna</span></button>
+    <button class="room-drawer-item" data-section="asistent"><span class="rdi">👤</span><span>Asistentský pokoj</span></button>
+    <button class="room-drawer-item" data-section="technicka"><span class="rdi">🔧</span><span>Technická místnost</span></button>
+    <button class="room-drawer-item" data-section="odpadky"><span class="rdi">🗑️</span><span>Odpadky</span></button>
+  </div>
+</div>
+
 <script src="./app.js" defer></script>
  
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Prohlížeč médií" aria-hidden="true">
