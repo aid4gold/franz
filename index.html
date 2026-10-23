@@ -52,6 +52,15 @@
     </div>
   </header>
  
+  <aside class="health-ribbon" aria-labelledby="health-ribbon-title">
+    <div class="health-ribbon-inner">
+      <div class="health-ribbon-label">⚠️ Aktuální a důležité informace</div>
+      <h2 id="health-ribbon-title">Změny zdravotního stavu – na co dát pozor</h2>
+      <p>U Franze se může občas objevit naklánění, přestože se v posledním půlroce nevyskytovalo. Během asistence mu proto průběžně věnujte pozornost a dbejte na jeho bezpečí, aby nedošlo k pádu. Ukázky najdete v nové sekci <a class="section-photo-link" href="#sec-zdravotni-stav" data-section="zdravotni-stav" data-target="sec-zdravotni-stav">Upozornění na změny zdravotního stavu – Příklad 1 a Příklad 2</a>.</p>
+      <p><strong>Jakoukoliv akutní změnu zdravotního stavu nebo novou situaci, kterou během asistence řešíte s paní Dianou, prosím oznamte také telefonicky na <a href="tel:+420724558999">+420 724 558 999</a>.</strong> O víkendu stačí informaci napsat do asistenčního linku.</p>
+    </div>
+  </aside>
+
   <div class="hero">
     <div class="hero-inner hero-inner--with-photo">
       <div class="hero-text">
@@ -74,6 +83,7 @@
     </button>
     <div class="section-nav-inner">
       <button class="nav-btn" data-section="manual">📘 Manuál péče</button>
+      <button class="nav-btn" data-section="zdravotni-stav">⚠️ Upozornění na změny zdravotního stavu</button>
       <button class="nav-btn active" data-section="satna">🚪 Šatna</button>
       <button class="nav-btn" data-section="kuchyn">🍳 Kuchyň</button>
       <button class="nav-btn" data-section="obyvak">🛋️ Obývací pokoj</button>
@@ -86,6 +96,19 @@
   </nav>
  
   <main class="main-content">
+    <div class="section-block" id="sec-zdravotni-stav">
+      <div class="section-title"><div class="section-icon-badge">⚠️</div><div><h2>Upozornění na změny zdravotního stavu</h2><p>Video příklady změn zdravotního stavu</p></div></div>
+      <div class="subsection subsection--video"><div class="subsection-label"><svg viewBox="0 0 12 12" fill="currentColor" style="width:9px;height:9px;flex-shrink:0"><path d="M3 2l8 4-8 4V2z"/></svg>Videa</div><div class="media-grid">
+          <div class="media-card">
+            <div class="media-thumb video-preview" data-videoid="xBemwKN_zBw"><img src="https://img.youtube.com/vi/xBemwKN_zBw/hqdefault.jpg" alt="Příklad 1" class="media-img" loading="lazy"/><div class="play-btn-overlay"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.62)"/><path d="M24 18l20 12-20 12V18z" fill="white"/></svg></div></div>
+            <div class="media-card-body"><div class="media-card-name">Příklad 1</div></div>
+          </div>
+          <div class="media-card">
+            <div class="media-thumb video-preview" data-videoid="cEP_4DviId0"><img src="https://img.youtube.com/vi/cEP_4DviId0/hqdefault.jpg" alt="Příklad 2" class="media-img" loading="lazy"/><div class="play-btn-overlay"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="30" fill="rgba(0,0,0,0.62)"/><path d="M24 18l20 12-20 12V18z" fill="white"/></svg></div></div>
+            <div class="media-card-body"><div class="media-card-name">Příklad 2</div></div>
+          </div>
+      </div></div>
+    </div>
  
     <div class="section-block active" id="sec-satna">
       <div class="section-title"><div class="section-icon-badge">🚪</div><div><h2>Šatna</h2><p>Instrukce pro šatnu</p></div></div>
@@ -1158,6 +1181,7 @@
   <p class="room-drawer-title">Přejít do místnosti</p>
   <div class="room-drawer-list">
     <button class="room-drawer-item" data-section="manual"><span class="rdi">📘</span><span>Manuál péče</span></button>
+    <button class="room-drawer-item" data-section="zdravotni-stav"><span class="rdi">⚠️</span><span>Upozornění na změny zdravotního stavu</span></button>
     <button class="room-drawer-item active" data-section="satna"><span class="rdi">🚪</span><span>Šatna</span></button>
     <button class="room-drawer-item" data-section="kuchyn"><span class="rdi">🍳</span><span>Kuchyň</span></button>
     <button class="room-drawer-item" data-section="obyvak"><span class="rdi">🛋️</span><span>Obývací pokoj</span></button>
